@@ -5,7 +5,7 @@
 Evergage.init({
     cookieDomain: "ciencuadras.com", 
   }).then(() => {
-      console.log("MCP Ciencuadras v82");
+      console.log("MCP Ciencuadras v83");
       
         let countList = 0;
   
@@ -652,6 +652,11 @@ Evergage.init({
                                 action:"Ciencuadras WEB - ubicacion de inmueble"
                             })
 
+                        }),
+                        Evergage.listener("click", "ciencuadras-cc-p-toggle", (event) =>{
+                            Evergage.sendEvent  ({
+                                action:"Ciencuadras WEB - activar pin ubicacion"
+                            })
                         })
                     ]
                 },
