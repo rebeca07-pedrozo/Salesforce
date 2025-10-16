@@ -5,7 +5,7 @@
 Evergage.init({
     cookieDomain: "ciencuadras.com", 
   }).then(() => {
-      console.log("MCP Ciencuadras v80");
+      console.log("MCP Ciencuadras v82");
       
         let countList = 0;
   
@@ -641,11 +641,17 @@ Evergage.init({
                             Evergage.sendEvent({
                                 action: "Ciencuadras WEB - tipo de inmueble"
                             });
+                        }),
                         Evergage.listener("click", ".back", (event)=>{
                             Evergage.sendEvent({
                                 action: "Ciencuadras WEB - salir ubicacion de inmueble"
                             })
-                        } )
+                        }),
+                        Evergage.listener("click", ".ccbutton.button.button.primary.block.container-button__button-continue.rounded", (event)=>{
+                            Evergage.sendEvent({
+                                action:"Ciencuadras WEB - ubicacion de inmueble"
+                            })
+
                         })
                     ]
                 },
