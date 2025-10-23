@@ -665,6 +665,7 @@ Evergage.init({
                             Evergage.sendEvent({
                                 action:"Ciencuadras WEB - ubicacion de inmueble"
                             })
+
                         }),
                         Evergage.listener("click", "ciencuadras-cc-p-toggle", (event) =>{
                             Evergage.sendEvent  ({
