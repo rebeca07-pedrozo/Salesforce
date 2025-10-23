@@ -5,7 +5,7 @@
 Evergage.init({
     cookieDomain: "ciencuadras.com", 
   }).then(() => {
-      console.log("MCP Ciencuadras v83");
+      console.log("MCP Ciencuadras v84");
       
         let countList = 0;
   
@@ -632,6 +632,20 @@ Evergage.init({
                     })
                 ]
             },
+            {
+                name: "Ciencuadras WEB - calcula tu credito",
+                isMatch: () => /^\/zona-privada\/publicaciones\/?$/.test(window.location.pathname),
+                action: "Ciencuadras WEB - calcula tu credito",
+                listeners:[
+                    Evergage.listener("click", ".ccbutton.button.button.medium.tertiary.btn-phone.rounded", (event)=>{
+                        Evergage.sendEvent({
+                            action:"Ciencuadras WEB - calcula tu credito"
+                        });
+                    })
+                    
+                ]
+            },
+
                  {
                     name: "Ciencuadras WEB - tipo de inmueble",
                     isMatch: () => /^\/publicacion-inmuebles\/publicar\/?$/.test(window.location.pathname),
@@ -651,7 +665,6 @@ Evergage.init({
                             Evergage.sendEvent({
                                 action:"Ciencuadras WEB - ubicacion de inmueble"
                             })
-
                         }),
                         Evergage.listener("click", "ciencuadras-cc-p-toggle", (event) =>{
                             Evergage.sendEvent  ({
