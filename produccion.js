@@ -5,7 +5,7 @@
 Evergage.init({
     cookieDomain: "ciencuadras.com", 
   }).then(() => {
-      console.log("MCP Ciencuadras v78");
+      console.log("MCP Ciencuadras v79");
       
         let countList = 0;
   
@@ -632,11 +632,19 @@ Evergage.init({
                     })
                 ]
             },
-            {
-                name: "Ciencuadras WEB - tipo de inmueble",
-                isMatch: ()=> /^\/publicacion-inmuebles\/datos-facturacion\/?$/.test(window.location.pathname),
-                action: "Ciencuadras WEB - tipo de inmueble"
-            },
+                 {
+                    name: "Ciencuadras WEB - tipo de inmueble",
+                    isMatch: () => /^\/publicacion-inmuebles\/publicar\/?$/.test(window.location.pathname),
+                    action: "Ciencuadras WEB - tipo de inmueble",
+                    listeners: [
+                        Evergage.listener("click", ".ccbutton.button.button.primary.block.property-type__continue.rounded", (event) => {
+                            Evergage.sendEvent({
+                                action: "Ciencuadras WEB - tipo de inmueble"
+                            });
+                        })
+                    ]
+                },
+
                     
               
               //END REBECA
