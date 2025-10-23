@@ -641,7 +641,12 @@ Evergage.init({
                         Evergage.sendEvent({
                             action:"Ciencuadras WEB - calcula tu credito"
                         });
-                    })
+                    }),
+                    Evergage.listener("click", ".align-right.custom-theme.ng-star-inserted", (event)=>{
+                        Evergage.sendEvent({
+                            action:"Ciencuadras WEB - exportar contactos"
+                        });
+                    }),
                     
                 ]
             },
