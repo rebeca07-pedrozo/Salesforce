@@ -461,225 +461,186 @@ Evergage.init({
                 ]
                 },
                  //BEGIN REBECA
-              {
+                            {
                 name: "Ciencuadras WEB  - Vista Colombianos Exterior",
                 isMatch: () => window.location.pathname === "/colombianos/exterior",
                 action: "Ciencuadras WEB  - Vista Colombianos Exterior",
-              },
-              
-              {
+                },
+
+                {
                 name: "Ciencuadras WEB - Vista Avaluo",
-                isMatch: ()=> /^\/avaluos-en-linea\/?$/.test(window.location.pathname),
+                isMatch: () => /^\/avaluos-en-linea\/?$/.test(window.location.pathname),
                 action: "Ciencuadras WEB - Vista Avaluo",
-              },
-              
-              {
+                },
+
+                {
                 name: "Ciencuadras WEB - Vista Publicacion inmueble",
-                isMatch: ()=> /^\/publicacion-inmuebles\/?$/.test(window.location.pathname),
+                isMatch: () => /^\/publicacion-inmuebles\/?$/.test(window.location.pathname),
                 action: "Ciencuadras WEB - Vista Publicacion inmueble",
                 listeners: [
-                    //Botón Plan
-                    Evergage.listener("click", ".ccbutton.button.button.primary.rounded ", (event) => {
-                        console.log('MCP - click en plan');
-                        if(event.target.closest(".owner-card.ng-star-inserted")){
-                            let planName = event.target.closest(".owner-card.ng-star-inserted");
-                            let planVl = planName.querySelector('.owner-card__title').childNodes[0].textContent;
+                    Evergage.listener("click", ".ccbutton.button.button.primary.rounded", (event) => {
+                    console.log("MCP - click en plan");
+                    const planCard = event.target.closest(".owner-card.ng-star-inserted");
+                    if (planCard) {
+                        const planVl = planCard.querySelector(".owner-card__title").childNodes[0].textContent;
+                        Evergage.sendEvent({
+                        action: "Ciencuadras WEB  - Boton Plan - " + planVl,
+                        });
+                    }
+                    }),
+                ],
+                },
 
-                            Evergage.sendEvent({
-                            action: "Ciencuadras WEB  - Boton Plan - " + planVl,
-                            });
+                {
+                name: "Ciencuadras WEB - Vista Publicacion inmueble - Personas",
+                isMatch: () => /^\/publicacion-inmuebles\/personas\/?$/.test(window.location.pathname),
+                action: "Ciencuadras WEB - Vista Publicacion inmueble - Personas",
+                listeners: [
+                    Evergage.listener("click", ".ccbutton.button.button.primary.rounded", (event) => {
+                    console.log("MCP - click en plan");
+                    const planCard = event.target.closest(".owner-card.ng-star-inserted");
+                    if (planCard) {
+                        const planVl = planCard.querySelector(".owner-card__title").childNodes[0].textContent;
+                        Evergage.sendEvent({
+                        action: "Ciencuadras WEB  - Boton Plan - " + planVl,
+                        });
+                    } else if (event.target.closest(".owner-card__detail.ng-star-inserted")) {
+                        const planCard = event.target.closest(".owner-card.ng-star-inserted");
+                        if (planCard) {
+                        const planVl = planCard.querySelector(".owner-card__title").childNodes[0].textContent;
+                        console.log("Este es el nombre del plan: " + planVl);
                         }
-                    })
-                ]
-              },
-          {
-              name: "Ciencuadras WEB - Vista Publicacion inmueble - Personas",
-              isMatch: () => /^\/publicacion-inmuebles\/personas\/?$/.test(window.location.pathname),
-              action: "Ciencuadras WEB - Vista Publicacion inmueble - Personas",
-              listeners: [
-                  //Botón Plan
-                  Evergage.listener("click", ".ccbutton.button.button.primary.rounded", (event) => {
-                      console.log('MCP - click en plan');
-                      if (event.target.closest(".owner-card.ng-star-inserted")) {
-                          let planName = event.target.closest(".owner-card.ng-star-inserted");
-                          let planVl = planName.querySelector('.owner-card__title').childNodes[0].textContent;
+                    }
+                    }),
 
-                          Evergage.sendEvent({
-                              action: "Ciencuadras WEB  - Boton Plan - " + planVl,
+                    Evergage.listener("click", ".back", () => {
+                    Evergage.sendEvent({ action: "Ciencuadras WEB - regresar" });
+                    }),
 
-                          });
-                      } else if (event, target.cosest(".owner-card__detail.ng-star-inserted")) {
-                          let planName = event.target.closest(".owner-card.ng-star-inserted");
-                          let planVl = planName.querySelector('.owner-card__title').childNodes[0].textContent;
-                          console.log("este  es el nombre del plan:" + planV1)
-                      }
-                  }),
-                  Evergage.listener("click", ".back", (event) => {
+                    Evergage.listener("click", ".ccbutton.button.button.secondary.block.rounded", () => {
+                    Evergage.sendEvent({ action: "Ciencuadras WEB - plan de publicacion modal" });
+                    }),
 
-                          Evergage.sendEvent({
-                              action: "Ciencuadras WEB - regresar",
-                          });
-                  }),
-                  Evergage.listener("click", ".ccbutton.button.button.secondary.block.rounded", (event)=>{
-                    Evergage.sendEvent({
-                        action:"Ciencuadras WEB - plan de publicacion modal",
-                    })
-                  }),
-                  Evergage.listener("click", ".ccbutton.button.button.secondary.btn-pay.rounded", (event)=>{
-                    Evergage.sendEvent({
-                        action:"Ciencuadras WEB - ir a pagar",
-                    })
-                  })
-              ]
-          },
-              {
+                    Evergage.listener("click", ".ccbutton.button.button.secondary.btn-pay.rounded", () => {
+                    Evergage.sendEvent({ action: "Ciencuadras WEB - ir a pagar" });
+                    }),
+                ],
+                },
+
+                {
                 name: "Ciencuadras WEB - Vista Publicacion inmueble - Agente Inmobiliario",
-                isMatch: ()=> /^\/publicacion-inmuebles\/agente-inmobiliario\/?$/.test(window.location.pathname),
+                isMatch: () => /^\/publicacion-inmuebles\/agente-inmobiliario\/?$/.test(window.location.pathname),
                 action: "Ciencuadras WEB - Vista Publicacion inmueble - Agente Inmobiliario",
                 listeners: [
-                    //Botón Plan
                     Evergage.listener("click", ".ccbutton.button.button.primary.rounded", (event) => {
-                        console.log('MCP - click en plan');
-                        if(event.target.closest(".owner-card.ng-star-inserted")){
-                            let planName = event.target.closest(".owner-card.ng-star-inserted");
-                            let planVl = planName.querySelector('.owner-card__title').childNodes[0].textContent;
+                    const planCard = event.target.closest(".owner-card.ng-star-inserted");
+                    if (planCard) {
+                        const planVl = planCard.querySelector(".owner-card__title").childNodes[0].textContent;
+                        Evergage.sendEvent({
+                        action: "Ciencuadras WEB  - Boton Plan - " + planVl,
+                        });
+                    }
+                    }),
+                ],
+                },
 
-                            Evergage.sendEvent({
-                            action: "Ciencuadras WEB  - Boton Plan - " + planVl,
-                            });
-                        }
-                    })
-                ]
-              },
-              {
+                {
                 name: "Ciencuadras WEB - Vista Publicacion inmueble - Inmobiliaria",
-                isMatch: ()=> /^\/productos\/seleccion-ideal\/constructora\/?$/.test(window.location.pathname),
+                isMatch: () => /^\/productos\/seleccion-ideal\/constructora\/?$/.test(window.location.pathname),
                 action: "Ciencuadras WEB - Vista Publicacion inmueble - Inmobiliaria",
-                
-              },
-               {
+                },
+
+                {
                 name: "Ciencuadras WEB - Vista Avaluo - Verificacion Cobertura",
-                isMatch: ()=> /^\/avaluos-en-linea\/verificacion-cobertura\/?$/.test(window.location.pathname),
+                isMatch: () => /^\/avaluos-en-linea\/verificacion-cobertura\/?$/.test(window.location.pathname),
                 action: "Ciencuadras WEB - Vista Avaluo - Verificacion Cobertura",
                 listeners: [
-                    //Botón Plan
-                    Evergage.listener("click", ".button.secondary.rounded.mb-base.message-sent-buttons.mt-small", (event) => {
-                        
-                            Evergage.sendEvent({
-                            action: "Ciencuadras WEB - verificar cobertura",
-                            });
-                       
+                    Evergage.listener("click", ".button.secondary.rounded.mb-base.message-sent-buttons.mt-small", () => {
+                    Evergage.sendEvent({ action: "Ciencuadras WEB - verificar cobertura" });
+                    }),
+                    Evergage.listener("click", ".button.block.rounded.tertiary.text-center.mb-thumb.mt-thumb.text-xsmall.btn-mobile", () => {
+                    Evergage.sendEvent({ action: "Ciencuadras WEB - sin cobertura" });
+                    }),
+                ],
+                },
 
-                        }),
-                    Evergage.listener("click", ".button.block.rounded.tertiary.text-center.mb-thumb.mt-thumb.text-xsmall.btn-mobile", (event) => {
-                        
-                            Evergage.sendEvent({
-                            action: "Ciencuadras WEB - sin cobertura",
-                            });
-                       
-
-                        })
-                ]
-              },
-              {
+                {
                 name: "Ciencuadras WEB - Vista Avaluo - Diligenciar Solicitud",
-                isMatch: ()=> /^\/avaluos-en-linea\/diligenciar-solicitud\/?$/.test(window.location.pathname),
+                isMatch: () => /^\/avaluos-en-linea\/diligenciar-solicitud\/?$/.test(window.location.pathname),
                 action: "Ciencuadras WEB - Vista Avaluo - Diligenciar Solicitud",
                 listeners: [
-                    //Botón Plan
-                  Evergage.listener("click", ".button.secondary.rounded.m-base.text-small", (event) => {
-                      Evergage.sendEvent({
-                          action: "Ciencuadras WEB - formulario avaluo - continuar",
-                      });
+                    Evergage.listener("click", ".button.secondary.rounded.m-base.text-small", () => {
+                    Evergage.sendEvent({ action: "Ciencuadras WEB - formulario avaluo - continuar" });
                     }),
-                ]
-            },
-              {
+                ],
+                },
+
+                {
                 name: "Ciencuadras WEB - Vista Avaluo - Pago Exitoso",
-                isMatch: ()=> /^\/avaluos-en-linea\/pago-exitoso\/?$/.test(window.location.pathname),
+                isMatch: () => /^\/avaluos-en-linea\/pago-exitoso\/?$/.test(window.location.pathname),
                 action: "Ciencuadras WEB - Vista Avaluo - Pago Exitoso",
                 listeners: [
-                    //Botón Plan
-                  Evergage.listener("click", ".button.secondary.rounded.m-base.text-small", (event) => {
-                      Evergage.sendEvent({
-                          action: "Ciencuadras WEB - formulario avaluo - pagar",
-                      });
+                    Evergage.listener("click", ".button.secondary.rounded.m-base.text-small", () => {
+                    Evergage.sendEvent({ action: "Ciencuadras WEB - formulario avaluo - pagar" });
                     }),
-                ]
-            },
-            {
+                ],
+                },
+
+                {
                 name: "Ciencuadras WEB - vista crear cuenta",
-                isMatch: ()=> window.location.pathname.includes('/publicacion-inmuebles/datos-facturacion'),
-                
+                isMatch: () => window.location.pathname.includes("/publicacion-inmuebles/datos-facturacion"),
                 action: "Ciencuadras WEB - vista crear cuenta",
                 listeners: [
-                    Evergage.DisplayUtils.pageElementLoaded(".ccbutton.button.button.primary.rounded").then(()=>{
-                        console.log("entro buscar el boton")
-                        const botonGuardarRegistro = document.querySelectorAll(".ccbutton.button.button.primary.rounded")[1]
-                        if(botonGuardarRegistro){
-                            console.log(`boton ${botonGuardarRegistro.innerText} encontrado `)
-                            botonGuardarRegistro.addEventListener("click",()=>{
+                    Evergage.DisplayUtils.pageElementLoaded(".ccbutton.button.button.primary.rounded").then(() => {
+                    console.log("entro buscar el boton");
+                    const botonGuardarRegistro = document.querySelectorAll(".ccbutton.button.button.primary.rounded")[1];
+                    if (botonGuardarRegistro) {
+                        console.log(`boton ${botonGuardarRegistro.innerText} encontrado`);
+                        botonGuardarRegistro.addEventListener("click", () => {
+                        Evergage.sendEvent({ action: "Ciencuadras WEB - crear cuenta" });
+                        console.log("evento enviado");
+                        });
+                    } else {
+                        console.log("boton guardar mi registro no existe");
+                    }
+                    }),
+                ],
+                },
 
-                                Evergage.sendEvent({
-                                    action: "Ciencuadras WEB - crear cuenta"
-                                });
-                                console.log("evento enviado")
-                            })
-                            
-                        }else{
-                            console.log("boton guardar mi registro no existe")
-                        }
-                    })
-                ]
-            },
-            {
+                {
                 name: "Ciencuadras WEB - calcula tu credito",
                 isMatch: () => /^\/zona-privada\/publicaciones\/?$/.test(window.location.pathname),
                 action: "Ciencuadras WEB - calcula tu credito",
-                listeners:[
-                    Evergage.listener("click", ".ccbutton.button.button.medium.tertiary.btn-phone.rounded", (event)=>{
-                        Evergage.sendEvent({
-                            action:"Ciencuadras WEB - calcula tu credito"
-                        });
+                listeners: [
+                    Evergage.listener("click", ".ccbutton.button.button.medium.tertiary.btn-phone.rounded", () => {
+                    Evergage.sendEvent({ action: "Ciencuadras WEB - calcula tu credito" });
                     }),
-                    Evergage.listener("click", ".align-right.custom-theme.ng-star-inserted", (event)=>{
-                        Evergage.sendEvent({
-                            action:"Ciencuadras WEB - exportar contactos"
-                        });
+                    Evergage.listener("click", ".align-right.custom-theme.ng-star-inserted", () => {
+                    Evergage.sendEvent({ action: "Ciencuadras WEB - exportar contactos" });
                     }),
-                    
-                ]
-            },
-
-                 {
-                    name: "Ciencuadras WEB - tipo de inmueble",
-                    isMatch: () => /^\/publicacion-inmuebles\/publicar\/?$/.test(window.location.pathname),
-                    action: "Ciencuadras WEB - tipo de inmueble",
-                    listeners: [
-                        Evergage.listener("click", ".ccbutton.button.button.primary.block.property-type__continue.rounded", (event) => {
-                            Evergage.sendEvent({
-                                action: "Ciencuadras WEB - tipo de inmueble"
-                            });
-                        }),
-                        Evergage.listener("click", ".back", (event)=>{
-                            Evergage.sendEvent({
-                                action: "Ciencuadras WEB - salir ubicacion de inmueble"
-                            })
-                        }),
-                        Evergage.listener("click", ".ccbutton.button.button.primary.block.container-button__button-continue.rounded", (event)=>{
-                            Evergage.sendEvent({
-                                action:"Ciencuadras WEB - ubicacion de inmueble"
-                            })
-
-                        }),
-                        Evergage.listener("click", "ciencuadras-cc-p-toggle", (event) =>{
-                            Evergage.sendEvent  ({
-                                action:"Ciencuadras WEB - activar pin ubicacion"
-                            })
-                        })
-                    ]
+                ],
                 },
-                                    
+
+                {
+                name: "Ciencuadras WEB - tipo de inmueble",
+                isMatch: () => /^\/publicacion-inmuebles\/publicar\/?$/.test(window.location.pathname),
+                action: "Ciencuadras WEB - tipo de inmueble",
+                listeners: [
+                    Evergage.listener("click", ".ccbutton.button.button.primary.block.property-type__continue.rounded", () => {
+                    Evergage.sendEvent({ action: "Ciencuadras WEB - tipo de inmueble" });
+                    }),
+                    Evergage.listener("click", ".back", () => {
+                    Evergage.sendEvent({ action: "Ciencuadras WEB - salir ubicacion de inmueble" });
+                    }),
+                    Evergage.listener("click", ".ccbutton.button.button.primary.block.container-button__button-continue.rounded", () => {
+                    Evergage.sendEvent({ action: "Ciencuadras WEB - ubicacion de inmueble" });
+                    }),
+                    Evergage.listener("click", "ciencuadras-cc-p-toggle", () => {
+                    Evergage.sendEvent({ action: "Ciencuadras WEB - activar pin ubicacion" });
+                    }),
+                ],
+                },
+
               
               //END REBECA
                //Ciencuadras WEB - Sección Publicación Inmuebles
