@@ -618,6 +618,9 @@ Evergage.init({
                     Evergage.listener("click", ".align-right.custom-theme.ng-star-inserted", () => {
                     Evergage.sendEvent({ action: "Ciencuadras WEB - exportar contactos" });
                     }),
+                    SalesforceInteractions.DisplayUtils.pageElementLoaded("ciencuadras-search-code").then(()=>{
+                        console.log("existe este modal")
+                    })
                 ],
                 },
 
