@@ -5,7 +5,7 @@
 Evergage.init({
     cookieDomain: "ciencuadras.com", 
   }).then(() => {
-      console.log("MCP Ciencuadras v87");
+      console.log("MCP Ciencuadras v89");
       
         let countList = 0;
   
@@ -646,6 +646,16 @@ Evergage.init({
                     }),
                     Evergage.listener("click", "ciencuadras-cc-p-toggle", () => {
                     Evergage.sendEvent({ action: "Ciencuadras WEB - activar pin ubicacion" });
+                    }),
+                ],
+                },
+                {
+                name: "Ciencuadras WEB - editar datos personales",
+                isMatch: () => /^\/zona-privada\/perfil\/?$/.test(window.location.pathname),
+                action: "Ciencuadras WEB - editar datos personales",
+                listeners: [
+                    Evergage.listener("click", ".ccbutton.button.button.profile-header__edit__btn.rounded", () => {
+                    Evergage.sendEvent({ action: "Ciencuadras WEB - editar datos personales"});
                     }),
                 ],
                 },
