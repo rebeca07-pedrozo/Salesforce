@@ -5,7 +5,7 @@
 Evergage.init({
     cookieDomain: "ciencuadras.com", 
   }).then(() => {
-      console.log("MCP Ciencuadras v86");
+      console.log("MCP Ciencuadras v87");
       
         let countList = 0;
   
@@ -623,6 +623,9 @@ Evergage.init({
                     }),
                     SalesforceInteractions.DisplayUtils.pageElementLoaded("ciencuadras-search-code").then(()=>{
                         console.log("existe este modal")
+                    }),
+                    Evergage.listener("click", ".private-card__button-pack.ng-star-inserted", ()=>{
+                        Evergage.sendEvent({action: "Ciencuadras WEB - acciones con el inmueble"})
                     })
                 ],
                 },
