@@ -5,7 +5,7 @@
 Evergage.init({
     cookieDomain: "ciencuadras.com", 
   }).then(() => {
-      console.log("MCP Ciencuadras v85");
+      console.log("MCP Ciencuadras v86");
       
         let countList = 0;
   
@@ -618,6 +618,12 @@ Evergage.init({
                     Evergage.listener("click", ".align-right.custom-theme.ng-star-inserted", () => {
                     Evergage.sendEvent({ action: "Ciencuadras WEB - exportar contactos" });
                     }),
+                    Evergage.listener("click", ".mat-tab-list", ()=> {
+                        Evergage.sendEvent({action: "Ciencuadras WEB - menu publicaciones"});
+                    }),
+                    SalesforceInteractions.DisplayUtils.pageElementLoaded("ciencuadras-search-code").then(()=>{
+                        console.log("existe este modal")
+                    })
                 ],
                 },
 
